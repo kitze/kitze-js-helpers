@@ -1,0 +1,36 @@
+{
+  "name": "kitze-js-helpers",
+  "version": "1.0.0",
+  "description": "Helper functions for easier js development",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha ./test/**/*.js -w",
+    "test:single": "mocha ./test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kitze/kitze-js-helpers.git"
+  },
+  "keywords": [
+    "kitze",
+    "javascript",
+    "helpers",
+    "js",
+    "lodash",
+    "underscore"
+  ],
+  "author": "kitze",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kitze/kitze-js-helpers/issues"
+  },
+  "homepage": "https://github.com/kitze/kitze-js-helpers#readme",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "underscore.string": "^3.2.2"
+  },
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "mocha": "^2.3.3"
+  }
+}
