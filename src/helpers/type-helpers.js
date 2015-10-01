@@ -5,11 +5,13 @@ function getType(obj) {
   return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
 }
 
-function matchTypes(arr) {
-  return _(arr).every(function (a, key) {
-    return !numberHelpers.isEven(key) ? true : getType(a) === arr[key + 1]
+function matchTypes() {
+  var objectsAndTypesArray = Array.prototype.slice.call(arguments);
+  return _(objectsAndTypesArray).every(function (a, key) {
+    return !numberHelpers.isEven(key) ? true : getType(a) === objectsAndTypesArray[key + 1]
   });
 }
+
 
 module.exports = {
   getType: getType,
