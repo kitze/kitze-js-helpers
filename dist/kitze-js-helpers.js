@@ -1,7 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-"use strict";
-
-},{}],2:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.kjs = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -17,16 +14,12 @@ var _lodash = (typeof window !== "undefined" ? window['_'] : typeof global !== "
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _underscoreString = require('underscore.string');
-
-var _underscoreString2 = _interopRequireDefault(_underscoreString);
-
 var _helpersTypeHelpers = require('../helpers/type-helpers');
 
 var typeHelpers = _interopRequireWildcard(_helpersTypeHelpers);
 
 var fillWithObjects = function fillWithObjects(initialArray, propertyName) {
-  return _lodash2['default'].map(initialArray, function (prop, key) {
+  return _lodash2['default'].map(initialArray, function (prop) {
     var newObject = {};
     newObject[propertyName] = prop;
     return newObject;
@@ -80,7 +73,7 @@ var containsOne = function containsOne(arrToSearch, arrToFind) {
 exports.containsOne = containsOne;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../helpers/type-helpers":4,"underscore.string":1}],3:[function(require,module,exports){
+},{"../helpers/type-helpers":3}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -111,7 +104,7 @@ var isEven = function isEven(num) {
 };
 exports.isEven = isEven;
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -148,7 +141,7 @@ var matchTypes = function matchTypes() {
 exports.matchTypes = matchTypes;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../helpers/number-helpers":3}],5:[function(require,module,exports){
+},{"../helpers/number-helpers":2}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -176,4 +169,5 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{"./helpers/array-helpers":2,"./helpers/number-helpers":3,"./helpers/type-helpers":4}]},{},[5]);
+},{"./helpers/array-helpers":1,"./helpers/number-helpers":2,"./helpers/type-helpers":3}]},{},[4])(4)
+});
