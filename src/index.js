@@ -1,9 +1,9 @@
-var numberHelpers = require('./helpers/number-helpers'),
-    typeHelpers   = require('./helpers/type-helpers'),
-    arrayHelpers  = require('./helpers/array-helpers');
+import * as numberHelpers from './helpers/number-helpers';
+import * as typeHelpers from './helpers/type-helpers';
+import * as arrayHelpers from './helpers/array-helpers';
 
-module.exports = {
+export default {
   num: numberHelpers,
   type: typeHelpers,
-  str: arrayHelpers
+  arr: arrayHelpers
 };

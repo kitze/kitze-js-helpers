@@ -1,16 +1,8 @@
 {
   "name": "kitze-js-helpers",
   "description": "Helper functions for easier js development",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "version": "0.0.0-semantically-released",
-  "scripts": {
-    "test": "mocha ./test/**/*.js -w",
-    "test:single": "istanbul cover -x *.test.js _mocha -- -R spec ./test/**/*.js",
-    "commit": "git cz",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
-    "report-coverage": "cat ./coverage/lcov.info | codecov"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kitze/kitze-js-helpers.git"
@@ -23,6 +15,19 @@
     "lodash",
     "underscore"
   ],
+  "browser": {
+    "lodash": false,
+    "underscore.string": false
+  },
+  "browserify": {
+    "transform": [
+      "babelify",
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "lodash": "global:_"
+  },
   "author": "kitze",
   "license": "ISC",
   "bugs": {
@@ -30,10 +35,15 @@
   },
   "homepage": "https://github.com/kitze/kitze-js-helpers#readme",
   "dependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
     "lodash": "^3.10.1",
-    "underscore.string": "^3.2.2"
+    "uglify": "^0.1.5",
+    "watchify": "^3.4.0"
   },
   "devDependencies": {
+    "babel": "^5.8.23",
+    "browserify-shim": "^3.8.10",
     "chai": "^3.3.0",
     "codecov.io": "^0.1.6",
     "commitizen": "^1.0.5",
@@ -49,5 +59,18 @@
     "ghooks": {
       "pre-commit": "npm run test:single && npm run check-coverage"
     }
+  },
+  "scripts": {
+    "test": "mocha ./test/**/*.js -w --compilers js:babel/register",
+    "test:single": "istanbul cover -x *.test.js _mocha -- -R spec ./test/**/*.js --compilers js:babel/register",
+    "commit": "git cz",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "npm run build-debug && npm run build-min",
+    "build-debug": "browserify src/index.js -s kjs -o dist/kitze-js-helpers.js",
+    "build-min": "uglify -s dist/kitze-js-helpers.js -o dist/kitze-js-helpers.min.js",
+    "build-watch": "watchify src/index.js -o dist/kitze-js-helpers.js -v"
   }
 }
