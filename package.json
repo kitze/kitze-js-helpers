@@ -73,7 +73,6 @@
     "build-debug": "browserify src/index.js -s kjs -o dist/kitze-js-helpers.js",
     "build-min": "uglify -s dist/kitze-js-helpers.js -o dist/kitze-js-helpers.min.js",
     "build-watch": "watchify src/index.js -o dist/kitze-js-helpers.js -v",
-    "build": "echo 'Building project...'",
     "prepublish": "npm run build",
     "postpublish": "publish-latest",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"

@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var numberHelpers = require('../../src/helpers/number-helpers');
 
-describe('number-helpers', function () {
+describe('numberHelpers', function () {
   describe('isEven', function () {
     it('should check if the value is even', function () {
       expect(numberHelpers.isEven(2)).to.be.true;
