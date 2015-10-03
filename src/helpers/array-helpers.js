@@ -2,7 +2,7 @@ import _ from 'lodash';
 import * as typeHelpers from '../helpers/type-helpers';
 
 export const fillWithObjects = (initialArray, propertyName) => {
-  return _.map(initialArray, function (prop, key) {
+  return _.map(initialArray, function (prop) {
     var newObject = {};
     newObject[propertyName] = prop;
     return newObject;
