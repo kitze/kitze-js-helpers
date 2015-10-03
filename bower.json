@@ -1,0 +1,23 @@
+{
+  "name": "kitze-js-helpers",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kitze/kitze-js-helpers",
+  "authors": [
+    "Kristjian Ristovski <kristijan.mkd@gmail.com>"
+  ],
+  "description": "js helpers",
+  "main": "dist/kitze-js-helpers.js",
+  "keywords": [
+    "kitze",
+    "js",
+    "helpers"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
