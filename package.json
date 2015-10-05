@@ -48,7 +48,7 @@
     "codecov.io": "0.1.6",
     "commitizen": "1.0.5",
     "cz-conventional-changelog": "1.1.2",
-    "istanbul": "0.3.21",
+    "istanbul": "0.3.22",
     "mocha": "2.3.3",
     "semantic-release": "4.3.5"
   },
