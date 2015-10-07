@@ -17,7 +17,8 @@
   ],
   "browser": {
     "lodash": false,
-    "underscore.string": false
+    "atob": false,
+    "btoa": false
   },
   "browserify": {
     "transform": [
@@ -42,15 +43,18 @@
     "watchify": "3.4.0"
   },
   "devDependencies": {
+    "atob": "1.1.2",
     "babel": "5.8.23",
     "browserify-shim": "3.8.10",
+    "btoa": "1.1.2",
     "chai": "3.3.0",
     "codecov.io": "0.1.6",
     "commitizen": "1.0.5",
     "cz-conventional-changelog": "1.1.2",
     "istanbul": "0.3.22",
     "mocha": "2.3.3",
-    "semantic-release": "4.3.5"
+    "semantic-release": "4.3.5",
+    "underscore.string": "3.2.2"
   },
   "czConfig": {
     "path": "node_modules/cz-conventional-changelog"
@@ -63,7 +67,7 @@
   "scripts": {
     "test": "mocha ./test/**/*.js -w --compilers js:babel/register",
     "test:single": "istanbul cover -x *.test.js _mocha -- -R spec ./test/**/*.js --compilers js:babel/register",
-    "precommit": "git status && git add .",
+    "precommit": "npm run build && npm run test:single && npm run check-coverage && git status && git add .",
     "commit": "git cz",
     "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
@@ -71,7 +75,6 @@
     "build": "npm run build-debug && npm run build-min",
     "build-debug": "browserify src/index.js -s kjs -o dist/kitze-js-helpers.js",
     "build-min": "uglify -s dist/kitze-js-helpers.js -o dist/kitze-js-helpers.min.js",
-    "build-watch": "watchify src/index.js i-o dist/kitze-js-helpers.js -v",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   }
 }
