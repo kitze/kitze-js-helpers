@@ -8,5 +8,6 @@ export default {
   num: numberHelpers,
   type: typeHelpers,
   str: stringHelpers,
-  obj: objectHelpers
+  obj: objectHelpers,
+  arr: arrayHelpers
 };
