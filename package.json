@@ -36,22 +36,22 @@
   },
   "homepage": "https://github.com/kitze/kitze-js-helpers#readme",
   "dependencies": {
-    "babelify": "6.3.0",
+    "babelify": "6.4.0",
     "browserify": "11.2.0",
     "lodash": "3.10.1",
     "uglify": "0.1.5",
-    "watchify": "3.4.0"
+    "watchify": "3.5.0"
   },
   "devDependencies": {
     "atob": "1.1.2",
-    "babel": "5.8.23",
+    "babel": "5.8.29",
     "browserify-shim": "3.8.10",
     "btoa": "1.1.2",
-    "chai": "3.3.0",
+    "chai": "3.4.0",
     "codecov.io": "0.1.6",
-    "commitizen": "1.0.5",
-    "cz-conventional-changelog": "1.1.2",
-    "istanbul": "0.3.22",
+    "commitizen": "2.3.0",
+    "cz-conventional-changelog": "1.1.4",
+    "istanbul": "0.4.0",
     "mocha": "2.3.3",
     "semantic-release": "4.3.5",
     "underscore.string": "3.2.2"
