@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/kitze/kitze-js-helpers#readme",
   "dependencies": {
-    "babelify": "6.4.0",
+    "babelify": "7.1.0",
     "browserify": "11.2.0",
     "lodash": "3.10.1",
     "uglify": "0.1.5",
