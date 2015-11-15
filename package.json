@@ -40,7 +40,7 @@
     "browserify": "11.2.0",
     "lodash": "3.10.1",
     "uglify": "0.1.5",
-    "watchify": "3.6.0"
+    "watchify": "3.6.1"
   },
   "devDependencies": {
     "atob": "1.1.2",
