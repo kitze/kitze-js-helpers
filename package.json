@@ -52,7 +52,7 @@
     "commitizen": "2.4.3",
     "cz-conventional-changelog": "1.1.4",
     "istanbul": "0.4.0",
-    "mocha": "2.3.3",
+    "mocha": "2.3.4",
     "semantic-release": "4.3.5",
     "underscore.string": "3.2.2"
   },
