@@ -45,7 +45,7 @@
   "devDependencies": {
     "atob": "2.0.0",
     "babel": "5.8.34",
-    "browserify-shim": "3.8.11",
+    "browserify-shim": "3.8.12",
     "btoa": "1.1.2",
     "chai": "3.4.0",
     "codecov.io": "0.1.6",
