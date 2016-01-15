@@ -54,7 +54,7 @@
     "istanbul": "0.4.2",
     "mocha": "2.3.4",
     "semantic-release": "4.3.5",
-    "underscore.string": "3.2.2"
+    "underscore.string": "3.2.3"
   },
   "czConfig": {
     "path": "node_modules/cz-conventional-changelog"
