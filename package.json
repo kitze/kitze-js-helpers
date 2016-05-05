@@ -43,7 +43,7 @@
     "watchify": "3.7.0"
   },
   "devDependencies": {
-    "atob": "2.0.0",
+    "atob": "2.0.3",
     "babel": "5.8.34",
     "browserify-shim": "3.8.12",
     "btoa": "1.1.2",
