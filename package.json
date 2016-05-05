@@ -50,7 +50,7 @@
     "chai": "3.5.0",
     "codecov.io": "0.1.6",
     "commitizen": "2.8.1",
-    "cz-conventional-changelog": "1.1.5",
+    "cz-conventional-changelog": "1.1.6",
     "istanbul": "0.4.2",
     "mocha": "2.4.5",
     "semantic-release": "4.3.5",
