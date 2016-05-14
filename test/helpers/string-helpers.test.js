@@ -51,7 +51,7 @@ describe('stringHelpers', function () {
       expect(stringHelpers.contains("kitze", "zero")).to.be.false;
       expect(stringHelpers.contains("KiTzE", "ZE", true)).to.be.true;
       expect(stringHelpers.contains("KiTzE", "ZeRo", true)).to.be.false;
-      expect(stringHelpers.contains("kitze", [1,2,3])).to.be.false;
+      expect(stringHelpers.contains("kitze", [1, 2, 3])).to.be.false;
     });
   });
   describe('dasherize', function () {
@@ -61,11 +61,11 @@ describe('stringHelpers', function () {
       expect(stringHelpers.dasherize("this   library   is   cool", true)).to.be.equal('this-library-is-cool');
     });
   });
-  describe('getImageFromBase64String', function(){
-      it('should remove the `data:image/png;base64,` part of an base64 image represented as a string', function(){
-        var b64image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACTYAAAVeCAYAAABBl';
-        expect(stringHelpers.getImageFromBase64String(b64image)).to.equal('iVBORw0KGgoAAAANSUhEUgAACTYAAAVeCAYAAABBl');
-      })
+  describe('getImageFromBase64String', function () {
+    it('should remove the `data:image/png;base64,` part of an base64 image represented as a string', function () {
+      var b64image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACTYAAAVeCAYAAABBl';
+      expect(stringHelpers.getImageFromBase64String(b64image)).to.equal('iVBORw0KGgoAAAANSUhEUgAACTYAAAVeCAYAAABBl');
+    })
   });
   describe('transliterate', function () {
     it('should convert a string from latinic to cyrilic', function () {
@@ -82,6 +82,17 @@ describe('stringHelpers', function () {
     it('should remove the spaces from a string and convert it to lowercase', function () {
       expect(stringHelpers.joinLowercase('THIS LIBRARY iS gReAt')).to.equal('thislibraryisgreat');
       expect(stringHelpers.joinLowercase('  THIS   LIBrArY iS    GREAT   ')).to.equal('thislibraryisgreat');
+    });
+  });
+  describe('getLetterFromNumber', function () {
+    it('Return a letter from the alphabet that\'s at "number" index', function () {
+      expect(stringHelpers.getLetterFromNumber(0)).to.equal('a');
+      expect(stringHelpers.getLetterFromNumber(7)).to.equal('h');
+      expect(stringHelpers.getLetterFromNumber(135)).to.not.exist;
+      expect(stringHelpers.getLetterFromNumber(-1)).to.not.exist;
+      expect(stringHelpers.getLetterFromNumber("maosadg")).to.not.exist;
+      expect(stringHelpers.getLetterFromNumber([])).to.not.exist;
+      expect(stringHelpers.getLetterFromNumber({})).to.not.exist;
     });
   });
 });

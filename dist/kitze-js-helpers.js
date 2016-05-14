@@ -130,10 +130,107 @@ var containsOne = function containsOne(arrToSearch, arrToFind) {
     return arrToSearch.indexOf(elem) !== -1;
   });
 };
+
 exports.containsOne = containsOne;
+/**
+ * @description Iterates through the objects in the array members and sets an "id" property if the item doesn't have one
+ * @param {Array} collection
+ * @returns {Array}
+ */
+var setIndexAsKeyProperty = function setIndexAsKeyProperty(collection) {
+  return _lodash2['default'].map(collection, function (item, index) {
+    return item.id === undefined ? _lodash2['default'].extend(item, { id: index }) : item;
+  });
+};
+exports.setIndexAsKeyProperty = setIndexAsKeyProperty;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../helpers/type-helpers":12}],9:[function(require,module,exports){
+},{"../helpers/type-helpers":15}],9:[function(require,module,exports){
+/**
+ * @description Check if the website is running as a standalone app (pinned to screen)
+ */
+/* istanbul ignore next */
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var isRunningStandalone = function isRunningStandalone() {
+  return window.matchMedia('(display-mode: standalone)').matches;
+};
+
+exports.isRunningStandalone = isRunningStandalone;
+/**
+ * @description Check if the browser is Safari
+ */
+/* istanbul ignore next */
+var isBrowserSafari = function isBrowserSafari() {
+  return typeof window.navigator !== 'undefined' && /Version\/[\d\.]+.*Safari/.test(window.navigator.userAgent);
+};
+exports.isBrowserSafari = isBrowserSafari;
+
+},{}],10:[function(require,module,exports){
+/**
+ * @description Simple hack for changing scrollTop on mobile, otherwise the page doesn't scroll
+ */
+/* istanbul ignore next */
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var mobileScrollTo = function mobileScrollTo(element, scrollPosition) {
+  element.css('overflow-y', 'hidden');
+  element.scrollTop(scrollPosition);
+  element.css('overflow-y', 'auto');
+};
+exports.mobileScrollTo = mobileScrollTo;
+
+},{}],11:[function(require,module,exports){
+/**
+ * @description Generates a config object for a mobile app icon
+ * @param {string} path
+ * @param {string} prefix
+ * @param {string} rel
+ * @param {number} [size]
+ * @returns {object}
+ */
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getIcon = function getIcon(path, prefix, rel, size) {
+  var sizeString = size ? size + 'x' + size : '';
+  return _extends({
+    rel: rel,
+    href: '' + path + prefix + (size ? '-' + sizeString : '') + '.png',
+    type: "image/png"
+  }, size && {
+    sizes: sizeString
+  });
+};
+
+exports.getIcon = getIcon;
+/**
+ * Gets an array of generated config objects for mobile app icons with different app size
+ * @param {string} path
+ * @param {string} prefix
+ * @param {string} rel
+ * @param {number} size
+ * @returns {array}
+ */
+var getIcons = function getIcons(path, prefix, rel, sizes) {
+  return sizes !== undefined && sizes.length > 0 ? sizes.map(function (size) {
+    return getIcon(path, prefix, rel, size);
+  }) : undefined;
+};
+exports.getIcons = getIcons;
+
+},{}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -164,7 +261,7 @@ var isEven = function isEven(num) {
 };
 exports.isEven = isEven;
 
-},{}],10:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -224,7 +321,7 @@ var isObject = function isObject(object) {
 exports.isObject = isObject;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../helpers/type-helpers.js":12}],11:[function(require,module,exports){
+},{"../helpers/type-helpers.js":15}],14:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -442,6 +539,7 @@ var transliterate = function transliterate(word) {
     return characters[character] || character;
   }).join('');
 };
+
 exports.transliterate = transliterate;
 /**
  * Join string as lowercase
@@ -451,10 +549,24 @@ exports.transliterate = transliterate;
 var joinLowercase = function joinLowercase(string) {
   return replaceAllSpaces(string).toLowerCase();
 };
+
 exports.joinLowercase = joinLowercase;
+/**
+ * Return a letter from the alphabet that's at "number" index
+ * @param {number} number
+ * @returns {string}
+ */
+var getLetterFromNumber = function getLetterFromNumber(number) {
+  if (!_lodash2['default'].isNumber(number)) {
+    return;
+  }
+  var result = 'abcdefghijklmnopqrstuvwxyz'.charAt(number);
+  return result === '' ? undefined : result;
+};
+exports.getLetterFromNumber = getLetterFromNumber;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../helpers/type-helpers.js":12,"atob":1,"btoa":1,"underscore.string/clean.js":2,"underscore.string/replaceAll.js":6}],12:[function(require,module,exports){
+},{"../helpers/type-helpers.js":15,"atob":1,"btoa":1,"underscore.string/clean.js":2,"underscore.string/replaceAll.js":6}],15:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -491,7 +603,7 @@ var matchTypes = function matchTypes() {
 exports.matchTypes = matchTypes;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../helpers/number-helpers":9}],13:[function(require,module,exports){
+},{"../helpers/number-helpers":12}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -520,14 +632,29 @@ var _helpersObjectHelpers = require('./helpers/object-helpers');
 
 var objectHelpers = _interopRequireWildcard(_helpersObjectHelpers);
 
+var _helpersBrowserHelpers = require('./helpers/browser-helpers');
+
+var browserHelpers = _interopRequireWildcard(_helpersBrowserHelpers);
+
+var _helpersMobileHelpers = require('./helpers/mobile-helpers');
+
+var mobileHelpers = _interopRequireWildcard(_helpersMobileHelpers);
+
+var _helpersDomHelpers = require('./helpers/dom-helpers');
+
+var domHelpers = _interopRequireWildcard(_helpersDomHelpers);
+
 exports['default'] = {
   num: numberHelpers,
   type: typeHelpers,
   str: stringHelpers,
   obj: objectHelpers,
-  arr: arrayHelpers
+  arr: arrayHelpers,
+  browser: browserHelpers,
+  dom: domHelpers,
+  mobile: mobileHelpers
 };
 module.exports = exports['default'];
 
-},{"./helpers/array-helpers":8,"./helpers/number-helpers":9,"./helpers/object-helpers":10,"./helpers/string-helpers":11,"./helpers/type-helpers":12}]},{},[13])(13)
+},{"./helpers/array-helpers":8,"./helpers/browser-helpers":9,"./helpers/dom-helpers":10,"./helpers/mobile-helpers":11,"./helpers/number-helpers":12,"./helpers/object-helpers":13,"./helpers/string-helpers":14,"./helpers/type-helpers":15}]},{},[16])(16)
 });

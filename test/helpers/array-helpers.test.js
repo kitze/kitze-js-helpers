@@ -94,4 +94,74 @@ describe('arrayHelpers', function () {
       expect(arrayHelpers.containsOne([1, 2, 3], [0])).to.be.false;
     });
   });
+  describe('setIndexAsKeyProperty', function () {
+    it('Iterates through the objects in the array members and sets an "id" property if the item doesn\'t have one', function () {
+      const arr = [
+        {
+          name: 'kitze',
+        },
+        {
+          name: 'axl'
+        }
+      ];
+
+      const result = [
+        {
+          name: 'kitze',
+          id: 0
+        },
+        {
+          name: 'axl',
+          id: 1
+        }
+      ];
+
+      const arrWithIds = [
+        {
+          name: 'kitze',
+          id: 1
+        },
+        {
+          name: 'axl',
+          id: 2
+        }
+      ];
+
+      const result2 = [
+        {
+          name: 'kitze',
+          id: 1
+        },
+        {
+          name: 'axl',
+          id: 2
+        }
+      ];
+
+      const arrWithSomeIds = [
+        {
+          name: 'kitze',
+          id: 0
+        },
+        {
+          name: 'axl'
+        }
+      ];
+
+      const result3 = [
+        {
+          name: 'kitze',
+          id: 0
+        },
+        {
+          name: 'axl',
+          id: 1
+        }
+      ];
+
+      expect(arrayHelpers.setIndexAsKeyProperty(arr)).to.eql(result);
+      expect(arrayHelpers.setIndexAsKeyProperty(arrWithIds)).to.eql(result2);
+      expect(arrayHelpers.setIndexAsKeyProperty(arrWithSomeIds)).to.eql(result3);
+    });
+  });
 });

@@ -44,3 +44,10 @@ export const containsOne = (arrToSearch, arrToFind) => {
     return arrToSearch.indexOf(elem) !== -1;
   });
 };
+
+/**
+ * @description Iterates through the objects in the array members and sets an "id" property if the item doesn't have one
+ * @param {Array} collection
+ * @returns {Array}
+ */
+export const setIndexAsKeyProperty = (collection) => _.map(collection, (item, index) => item.id === undefined ? _.extend(item, {id: index}) : item)

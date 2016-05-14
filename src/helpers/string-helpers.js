@@ -178,6 +178,7 @@ export const transliterate = (word) => {
     }
   ).join('');
 };
+
 /**
  * Join string as lowercase
  * @param {String} string
@@ -186,3 +187,16 @@ export const transliterate = (word) => {
 export const joinLowercase = (string) => {
   return replaceAllSpaces(string).toLowerCase();
 };
+
+/**
+ * Return a letter from the alphabet that's at "number" index
+ * @param {number} number
+ * @returns {string}
+ */
+export const getLetterFromNumber = number => {
+  if (!_.isNumber(number)) {
+    return;
+  }
+  const result = 'abcdefghijklmnopqrstuvwxyz'.charAt(number);
+  return result === '' ? undefined : result;
+}
