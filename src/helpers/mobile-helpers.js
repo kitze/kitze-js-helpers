@@ -1,3 +1,5 @@
+/** @module Mobile helpers */
+
 /**
  * @description Generates a config object for a mobile app icon
  * @param {string} path

@@ -60,6 +60,8 @@ module.exports = function trim(str, characters) {
 
 },{"./helper/defaultToWhiteSpace":3,"./helper/makeString":5}],8:[function(require,module,exports){
 (function (global){
+/** @module Array helpers */
+
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -146,6 +148,8 @@ exports.setIndexAsKeyProperty = setIndexAsKeyProperty;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../helpers/type-helpers":15}],9:[function(require,module,exports){
+/** @module Browser helpers */
+
 /**
  * @description Check if the website is running as a standalone app (pinned to screen)
  */
@@ -170,6 +174,8 @@ var isBrowserSafari = function isBrowserSafari() {
 exports.isBrowserSafari = isBrowserSafari;
 
 },{}],10:[function(require,module,exports){
+/** @module DOM helpers */
+
 /**
  * @description Simple hack for changing scrollTop on mobile, otherwise the page doesn't scroll
  */
@@ -187,6 +193,8 @@ var mobileScrollTo = function mobileScrollTo(element, scrollPosition) {
 exports.mobileScrollTo = mobileScrollTo;
 
 },{}],11:[function(require,module,exports){
+/** @module Mobile helpers */
+
 /**
  * @description Generates a config object for a mobile app icon
  * @param {string} path
@@ -231,6 +239,14 @@ var getIcons = function getIcons(path, prefix, rel, sizes) {
 exports.getIcons = getIcons;
 
 },{}],12:[function(require,module,exports){
+/** @module Number helpers */
+
+/**
+ * @description Increases the current value until is bigger than the max value, then it resets it to 0
+ * @param {number} current
+ * @param {number} max
+ * @return {number}
+ */
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -245,8 +261,15 @@ var cycleValue = function cycleValue(current, max) {
 };
 
 exports.cycleValue = cycleValue;
-var cycleValueAround = function cycleValueAround(current, increase, max) {
-  current = current + increase;
+/**
+ * @description Increases the current value until is bigger than the max value, then resets it to 0. If the value is decreased below 0 it's reset to the max value
+ * @param {number} current
+ * @param {number} change
+ * @param {number} max
+ * @return {number}
+ */
+var cycleValueAround = function cycleValueAround(current, change, max) {
+  current = current + change;
   if (current >= max) {
     current = 0;
   } else if (current === -1) {
@@ -263,6 +286,8 @@ exports.isEven = isEven;
 
 },{}],13:[function(require,module,exports){
 (function (global){
+/** @module Object helpers */
+
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -284,7 +309,8 @@ var _lodash2 = _interopRequireDefault(_lodash);
 /**
  * @description Extend each object in array with a specific key and value.
  * @example
- * extendEach([{name:'Kristijan'}, {name:'Martin'}], 'surname', 'some new surname');
+ * //returns [{name: 'Kristijan', surname: 'Ristovski'}, {name: 'Martin', surname: 'Ristovski'}]
+ * extendEach([{name:'Kristijan'}, {name:'Martin'}], 'surname', 'Ristovski');
  * @param {Array} array
  * @param {String} key
  * @param {String} value
@@ -323,6 +349,8 @@ exports.isObject = isObject;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../helpers/type-helpers.js":15}],14:[function(require,module,exports){
 (function (global){
+/** @module String helpers */
+
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -568,6 +596,8 @@ exports.getLetterFromNumber = getLetterFromNumber;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../helpers/type-helpers.js":15,"atob":1,"btoa":1,"underscore.string/clean.js":2,"underscore.string/replaceAll.js":6}],15:[function(require,module,exports){
 (function (global){
+/** @module Type helpers */
+
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -586,11 +616,34 @@ var _helpersNumberHelpers = require('../helpers/number-helpers');
 
 var numberHelpers = _interopRequireWildcard(_helpersNumberHelpers);
 
-var getType = function getType(obj) {
-  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+/**
+ * @description Returns the type of the variable as a string
+ * @param a
+ * @example
+ * // returns 'string'
+ * getType('kitze');
+ * @example
+ * // returns 'array'
+ * getType([1,2,3]);
+ * @returns {string}
+ */
+var getType = function getType(a) {
+  return ({}).toString.call(a).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
 };
 
 exports.getType = getType;
+/**
+ * Checks if every variable in the objectsAndTypesArray matches the type (that's provided as the next argument in the array)
+ * @param objectsAndTypesArray
+ * /**
+ * @example
+ * // returns true
+ * matchTypes('kitze', 'string', [1,2,3], 'array');
+ * @example
+ * // returns false
+ * matchTypes(5, 'string', {'name': 'kitze'}, 'string');
+ * @returns {boolean|*} Returns the value of x for the equation.
+ */
 var matchTypes = function matchTypes() {
   for (var _len = arguments.length, objectsAndTypesArray = Array(_len), _key = 0; _key < _len; _key++) {
     objectsAndTypesArray[_key] = arguments[_key];

@@ -1,3 +1,5 @@
+/** @module DOM helpers */
+
 /**
  * @description Simple hack for changing scrollTop on mobile, otherwise the page doesn't scroll
  */

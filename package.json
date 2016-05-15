@@ -52,6 +52,8 @@
     "commitizen": "2.8.1",
     "cz-conventional-changelog": "1.1.6",
     "istanbul": "0.4.2",
+    "jsdoc": "^3.4.0",
+    "minami": "^1.1.1",
     "mocha": "2.4.5",
     "semantic-release": "4.3.5",
     "underscore.string": "3.3.4"
@@ -67,7 +69,7 @@
   "scripts": {
     "test": "mocha ./test/**/*.js -w --compilers js:babel/register",
     "test:single": "istanbul cover -x *.test.js _mocha -- -R spec ./test/**/*.js --compilers js:babel/register",
-    "precommit": "npm run build && npm run test:single && npm run check-coverage && git status && git add .",
+    "precommit": "npm run generate-docs && npm run build && npm run test:single && npm run check-coverage && git status && git add .",
     "commit": "git cz",
     "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
@@ -75,6 +77,11 @@
     "build": "npm run build-debug && npm run build-min",
     "build-debug": "browserify src/index.js -s kjs -o dist/kitze-js-helpers.js",
     "build-min": "uglify -s dist/kitze-js-helpers.js -o dist/kitze-js-helpers.min.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose",
+    "run-docs": "rm -rf docs && npm run generate-docs && cd docs/kitze-js-helpers/0.0.0-semantically-released && http-server",
+    "publish-docs": "npm run generate-docs && surge docs/kitze-js-helpers/0.0.0-semantically-released kitze-js-helpers.surge.sh",
+    "publish-coverage": "npm run check-coverage && surge coverage/lcov-report/ kitze-js-helpers-coverage.surge.sh",
+    "force-publish-docs": "npm run publish-docs -f"
   }
 }

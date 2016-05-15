@@ -1,3 +1,5 @@
+/** @module Browser helpers */
+
 /**
  * @description Check if the website is running as a standalone app (pinned to screen)
  */

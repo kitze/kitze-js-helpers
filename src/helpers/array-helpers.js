@@ -1,3 +1,5 @@
+/** @module Array helpers */
+
 import _ from 'lodash';
 import * as typeHelpers from '../helpers/type-helpers';
 

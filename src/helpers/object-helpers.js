@@ -1,10 +1,13 @@
+/** @module Object helpers */
+
 import * as typeHelpers from '../helpers/type-helpers.js';
 import _ from 'lodash';
 
 /**
  * @description Extend each object in array with a specific key and value.
  * @example
- * extendEach([{name:'Kristijan'}, {name:'Martin'}], 'surname', 'some new surname');
+ * //returns [{name: 'Kristijan', surname: 'Ristovski'}, {name: 'Martin', surname: 'Ristovski'}]
+ * extendEach([{name:'Kristijan'}, {name:'Martin'}], 'surname', 'Ristovski');
  * @param {Array} array
  * @param {String} key
  * @param {String} value
