@@ -35,3 +35,18 @@ export const getIcon = (path, prefix, rel, iconsMap, size) => {
  * @returns {array}
  */
 export const getIcons = (path, prefix, rel, iconsMap, sizes) => sizes !== undefined && sizes.length > 0 ? sizes.map(size => getIcon(path, prefix, rel, iconsMap, size)) : undefined;
+
+/**
+ * @description Provided an iconsPrefix and an iconsMap it should return the configuration for all the favicons
+ * @param {String} iconsPrefix
+ * @param {Array} iconsMap
+ * @returns {{appleIcons: array, favicons: array, defaultAppleIcon: {rel, href, type}}}
+ */
+/* istanbul ignore next */
+export const getDefaultFavicons = (iconsPrefix, iconsMap) => {
+  return {
+    appleIcons: getIcons(iconsPrefix, 'apple-icon', 'apple-touch-icon', [57, 60, 72, 76, 114, 120, 144, 152, 180], iconsMap),
+    favicons: getIcons(iconsPrefix, 'favicon', 'icon', [16, 32, 96], iconsMap),
+    defaultAppleIcon: getIcon(iconsPrefix, 'apple-icon', 'apple-touch-icon', iconsMap)
+  }
+}

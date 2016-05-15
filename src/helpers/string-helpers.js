@@ -12,16 +12,8 @@ import atob from 'atob';
  * @param {number} [numberOfCharacters=10]
  * @returns {string}
  */
-export const randomString = (numberOfCharacters) => { //get random string
-  var s = '';
-  const randomchar = () => {
-    var n = Math.floor(Math.random() * 62);
-    if (n < 10) return n; //1-10
-    if (n < 36) return String.fromCharCode(n + 55); //A-Z
-    return String.fromCharCode(n + 61); //a-z
-  };
-  while (s.length < (numberOfCharacters === undefined ? 10 : numberOfCharacters)) s += randomchar();
-  return s;
+export const randomString = (numberOfCharacters = 10) => { //get random string
+  return Math.random().toString(36).substr(2, numberOfCharacters)
 };
 
 /**

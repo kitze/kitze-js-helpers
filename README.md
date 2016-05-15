@@ -19,6 +19,7 @@ What kind of helpers?
 * [Object helpers](http://kitze-js-helpers.surge.sh/module-Object%252520helpers.html)
 * [String helpers](http://kitze-js-helpers.surge.sh/module-String%2520helpers.html)
 * [Type helpers](http://kitze-js-helpers.surge.sh/module-Type%2520helpers.html)
+* [Webpack helpers](http://kitze-js-helpers.surge.sh/module-Webpack%2520helpers.html)
 
 Documentation
 -------

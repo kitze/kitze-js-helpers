@@ -164,4 +164,28 @@ describe('arrayHelpers', function () {
       expect(arrayHelpers.setIndexAsKeyProperty(arrWithSomeIds)).to.eql(result3);
     });
   });
+  describe('getPropertyFromAnotherArray', () => {
+    it('should map an array and return an object that contains one property from arr1 array, and another property from the arr2 array', () => {
+
+      const names = ['kitze', 'benji', 'marija'];
+      const ages = [22, 1, 21];
+
+      const result = [
+        {
+          name: 'kitze',
+          age: 22
+        },
+        {
+          name: 'benji',
+          age: 1
+        },
+        {
+          name: 'marija',
+          age: 21
+        }
+      ];
+
+      expect(arrayHelpers.getPropertyFromAnotherArray(names, ages, 'name', 'age')).to.deep.equal(result);
+    });
+  });
 });

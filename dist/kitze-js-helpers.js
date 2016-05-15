@@ -72,6 +72,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var _lodash = (typeof window !== "undefined" ? window['_'] : typeof global !== "undefined" ? global['_'] : null);
 
 var _lodash2 = _interopRequireDefault(_lodash);
@@ -144,7 +146,24 @@ var setIndexAsKeyProperty = function setIndexAsKeyProperty(collection) {
     return item.id === undefined ? _lodash2['default'].extend(item, { id: index }) : item;
   });
 };
+
 exports.setIndexAsKeyProperty = setIndexAsKeyProperty;
+/**
+ * @description Maps an array and returns an object that contains one property from arr1 array, and another property from the arr2 array
+ * @param {Array} arr1
+ * @param {Array} arr2
+ * @param {String} firstArrParName
+ * @param {String} secondArrParName
+ * @returns {Array}
+ */
+var getPropertyFromAnotherArray = function getPropertyFromAnotherArray(arr1, arr2, firstArrParName, secondArrParName) {
+  return _lodash2['default'].map(arr1, function (item, i) {
+    var _ref;
+
+    return (_ref = {}, _defineProperty(_ref, firstArrParName, item), _defineProperty(_ref, secondArrParName, arr2[i]), _ref);
+  });
+};
+exports.getPropertyFromAnotherArray = getPropertyFromAnotherArray;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../helpers/type-helpers":15}],9:[function(require,module,exports){
@@ -249,7 +268,23 @@ var getIcons = function getIcons(path, prefix, rel, iconsMap, sizes) {
     return getIcon(path, prefix, rel, iconsMap, size);
   }) : undefined;
 };
+
 exports.getIcons = getIcons;
+/**
+ * @description Provided an iconsPrefix and an iconsMap it should return the configuration for all the favicons
+ * @param {String} iconsPrefix
+ * @param {Array} iconsMap
+ * @returns {{appleIcons: array, favicons: array, defaultAppleIcon: {rel, href, type}}}
+ */
+/* istanbul ignore next */
+var getDefaultFavicons = function getDefaultFavicons(iconsPrefix, iconsMap) {
+  return {
+    appleIcons: getIcons(iconsPrefix, 'apple-icon', 'apple-touch-icon', [57, 60, 72, 76, 114, 120, 144, 152, 180], iconsMap),
+    favicons: getIcons(iconsPrefix, 'favicon', 'icon', [16, 32, 96], iconsMap),
+    defaultAppleIcon: getIcon(iconsPrefix, 'apple-icon', 'apple-touch-icon', iconsMap)
+  };
+};
+exports.getDefaultFavicons = getDefaultFavicons;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],12:[function(require,module,exports){
@@ -404,17 +439,10 @@ var _atob2 = _interopRequireDefault(_atob);
  * @param {number} [numberOfCharacters=10]
  * @returns {string}
  */
-var randomString = function randomString(numberOfCharacters) {
+var randomString = function randomString() {
+  var numberOfCharacters = arguments.length <= 0 || arguments[0] === undefined ? 10 : arguments[0];
   //get random string
-  var s = '';
-  var randomchar = function randomchar() {
-    var n = Math.floor(Math.random() * 62);
-    if (n < 10) return n; //1-10
-    if (n < 36) return String.fromCharCode(n + 55); //A-Z
-    return String.fromCharCode(n + 61); //a-z
-  };
-  while (s.length < (numberOfCharacters === undefined ? 10 : numberOfCharacters)) s += randomchar();
-  return s;
+  return Math.random().toString(36).substr(2, numberOfCharacters);
 };
 
 exports.randomString = randomString;
@@ -709,6 +737,8 @@ var mobileHelpers = _interopRequireWildcard(_helpersMobileHelpers);
 
 var _helpersDomHelpers = require('./helpers/dom-helpers');
 
+var webpackHelpers = _interopRequireWildcard(_helpersDomHelpers);
+
 var domHelpers = _interopRequireWildcard(_helpersDomHelpers);
 
 exports['default'] = {
@@ -719,7 +749,8 @@ exports['default'] = {
   arr: arrayHelpers,
   browser: browserHelpers,
   dom: domHelpers,
-  mobile: mobileHelpers
+  mobile: mobileHelpers,
+  webpack: webpackHelpers
 };
 module.exports = exports['default'];
 

@@ -52,4 +52,21 @@ export const containsOne = (arrToSearch, arrToFind) => {
  * @param {Array} collection
  * @returns {Array}
  */
-export const setIndexAsKeyProperty = (collection) => _.map(collection, (item, index) => item.id === undefined ? _.extend(item, {id: index}) : item)
+export const setIndexAsKeyProperty = (collection) => _.map(collection, (item, index) => item.id === undefined ? _.extend(item, {id: index}) : item);
+
+/**
+ * @description Maps an array and returns an object that contains one property from arr1 array, and another property from the arr2 array
+ * @param {Array} arr1
+ * @param {Array} arr2
+ * @param {String} firstArrParName
+ * @param {String} secondArrParName
+ * @returns {Array}
+ */
+export const getPropertyFromAnotherArray = (arr1, arr2, firstArrParName, secondArrParName) => {
+  return _.map(arr1, (item, i) => {
+    return {
+      [firstArrParName]: item,
+      [secondArrParName]: arr2[i]
+    }
+  })
+}

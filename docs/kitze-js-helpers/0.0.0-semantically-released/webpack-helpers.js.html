@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>number-helpers.js - Documentation</title>
+    <title>webpack-helpers.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,7 +28,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">number-helpers.js</h1>
+    <h1 class="page-title">webpack-helpers.js</h1>
     
 
     
@@ -38,43 +38,16 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/** @module Number helpers */
+            <pre class="prettyprint source linenums"><code>/** @module Webpack helpers */
 
 /**
- * @description Increases the current value until is bigger than the max value, then it resets it to 0
- * @param {number} current
- * @param {number} max
- * @return {number}
+ * @description Require all keys from a context
  */
-export const cycleValue = (current, max) => {
-  current++;
-  if (current > max) {
-    current = 0;
-  }
-  return current;
-};
-
-/**
- * @description Increases the current value until is bigger than the max value, then resets it to 0. If the value is decreased below 0 it's reset to the max value
- * @param {number} current
- * @param {number} change
- * @param {number} max
- * @return {number}
- */
-export const cycleValueAround = (current, change, max) => {
-  current = current + change;
-  if (current >= max) {
-    current = 0;
-  }
-  else if (current === -1) {
-    current = max - 1;
-  }
-  return current;
-};
-
-export const isEven = (num) => {
-  return num % 2 === 0;
-};</code></pre>
+/* istanbul ignore next */
+export const requireAll = (requireContext) => {
+  return requireContext.keys().map(requireContext);
+}
+</code></pre>
         </article>
     </section>
 

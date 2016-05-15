@@ -5,6 +5,7 @@ import * as stringHelpers from './helpers/string-helpers';
 import * as objectHelpers from './helpers/object-helpers';
 import * as browserHelpers from './helpers/browser-helpers';
 import * as mobileHelpers from './helpers/mobile-helpers';
+import * as webpackHelpers from './helpers/dom-helpers';
 import * as domHelpers from './helpers/dom-helpers';
 
 export default {
@@ -15,5 +16,6 @@ export default {
   arr: arrayHelpers,
   browser: browserHelpers,
   dom: domHelpers,
-  mobile: mobileHelpers
+  mobile: mobileHelpers,
+  webpack: webpackHelpers
 };

@@ -80,8 +80,10 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose",
     "run-docs": "rm -rf docs && npm run generate-docs && cd docs/kitze-js-helpers/0.0.0-semantically-released && http-server",
+    "run-coverage": "rm -rf coverage && npm run test:single && cd coverage/lcov-report/ && http-server",
     "publish-docs": "npm run generate-docs && surge docs/kitze-js-helpers/0.0.0-semantically-released kitze-js-helpers.surge.sh",
     "publish-coverage": "npm run check-coverage && surge coverage/lcov-report/ kitze-js-helpers-coverage.surge.sh",
-    "force-publish-docs": "npm run publish-docs -f"
+    "force-publish-docs": "npm run publish-docs -f",
+    "update-surge": "npm run force-publish-docs && npm run publish-coverage"
   }
 }
