@@ -1,37 +1,48 @@
 import {expect} from 'chai';
 import * as mobileHelpers from '../../src/helpers/mobile-helpers';
 
+const iconsMap = [
+  {
+    name: './android-25x25.png',
+    module: 123
+  },
+  {
+    name: './android-32x32.png',
+    module: 456
+  }
+];
+
 describe('mobileHelpers', function () {
   describe('getIcon', function () {
     it('generate a config object for a mobile app icon', function () {
 
-      const path = '../../mobile-config/';
+      const path = './';
       const prefix = 'android';
       const rel = 'rel';
       const size = 25;
 
       const result = {
         rel: 'rel',
-        href: '../../mobile-config/android-25x25.png',
+        href: 123,
         type: 'image/png',
         sizes: '25x25'
       };
 
       const resultWithoutSize = {
         rel: 'rel',
-        href: '../../mobile-config/android.png',
+        href: undefined,
         type: 'image/png'
       };
 
-      expect(mobileHelpers.getIcon(path, prefix, rel, size)).to.eql(result);
-      expect(mobileHelpers.getIcon(path, prefix, rel)).to.eql(resultWithoutSize);
+      expect(mobileHelpers.getIcon(path, prefix, rel, iconsMap, size)).to.eql(result);
+      expect(mobileHelpers.getIcon(path, prefix, rel, iconsMap)).to.eql(resultWithoutSize);
     });
   });
 
   describe('getIcons', function () {
     it('gets an array of generated config objects for mobile app icons with different app size', function () {
 
-      const path = '../../mobile-config/';
+      const path = './';
       const prefix = 'android';
       const rel = 'rel';
       const sizes = [25, 32];
@@ -39,20 +50,20 @@ describe('mobileHelpers', function () {
       const result = [
         {
           rel: 'rel',
-          href: '../../mobile-config/android-25x25.png',
+          href: 123,
           type: 'image/png',
           sizes: '25x25'
         },
         {
           rel: 'rel',
-          href: '../../mobile-config/android-32x32.png',
+          href: 456,
           type: 'image/png',
           sizes: '32x32'
         }
       ];
 
-      expect(mobileHelpers.getIcons(path, prefix, rel, sizes)).to.eql(result);
-      expect(mobileHelpers.getIcons(path, prefix, rel)).to.not.exist;
+      expect(mobileHelpers.getIcons(path, prefix, rel, iconsMap, sizes)).to.eql(result);
+      expect(mobileHelpers.getIcons(path, prefix, rel, iconsMap)).to.not.exist;
     });
   });
 });

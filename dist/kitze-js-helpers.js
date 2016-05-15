@@ -193,16 +193,8 @@ var mobileScrollTo = function mobileScrollTo(element, scrollPosition) {
 exports.mobileScrollTo = mobileScrollTo;
 
 },{}],11:[function(require,module,exports){
+(function (global){
 /** @module Mobile helpers */
-
-/**
- * @description Generates a config object for a mobile app icon
- * @param {string} path
- * @param {string} prefix
- * @param {string} rel
- * @param {number} [size]
- * @returns {object}
- */
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -211,11 +203,31 @@ Object.defineProperty(exports, '__esModule', {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var getIcon = function getIcon(path, prefix, rel, size) {
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _lodash = (typeof window !== "undefined" ? window['_'] : typeof global !== "undefined" ? global['_'] : null);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+/**
+ * @description Generates a config object for a mobile app icon
+ * @param {string} path
+ * @param {string} prefix
+ * @param {string} rel
+ * @param {Array} iconsMap
+ * @param {number} [size]
+ * @returns {object}
+ */
+var getIcon = function getIcon(path, prefix, rel, iconsMap, size) {
   var sizeString = size ? size + 'x' + size : '';
+  var foundPath = '' + path + prefix + (size ? '-' + sizeString : '') + '.png';
+  var foundResult = _lodash2['default'].find(iconsMap, function (icon) {
+    return icon.name === foundPath;
+  });
+
   return _extends({
     rel: rel,
-    href: '' + path + prefix + (size ? '-' + sizeString : '') + '.png',
+    href: foundResult ? foundResult.module : undefined,
     type: "image/png"
   }, size && {
     sizes: sizeString
@@ -228,16 +240,18 @@ exports.getIcon = getIcon;
  * @param {string} path
  * @param {string} prefix
  * @param {string} rel
- * @param {number} size
+ * @param {Array} iconsMap
+ * @param {Array} [sizes]
  * @returns {array}
  */
-var getIcons = function getIcons(path, prefix, rel, sizes) {
+var getIcons = function getIcons(path, prefix, rel, iconsMap, sizes) {
   return sizes !== undefined && sizes.length > 0 ? sizes.map(function (size) {
-    return getIcon(path, prefix, rel, size);
+    return getIcon(path, prefix, rel, iconsMap, size);
   }) : undefined;
 };
 exports.getIcons = getIcons;
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],12:[function(require,module,exports){
 /** @module Number helpers */
 
