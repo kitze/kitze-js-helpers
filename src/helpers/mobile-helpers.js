@@ -42,11 +42,10 @@ export const getIcons = (path, prefix, rel, iconsMap, sizes) => sizes !== undefi
  * @param {Array} iconsMap
  * @returns {{appleIcons: array, favicons: array, defaultAppleIcon: {rel, href, type}}}
  */
-/* istanbul ignore next */
 export const getDefaultFavicons = (iconsPrefix, iconsMap) => {
   return {
-    appleIcons: getIcons(iconsPrefix, 'apple-icon', 'apple-touch-icon', [57, 60, 72, 76, 114, 120, 144, 152, 180], iconsMap),
-    favicons: getIcons(iconsPrefix, 'favicon', 'icon', [16, 32, 96], iconsMap),
+    appleIcons: getIcons(iconsPrefix, 'apple-icon', 'apple-touch-icon', iconsMap, [57, 60, 72, 76, 114, 120, 144, 152, 180]),
+    favicons: getIcons(iconsPrefix, 'favicon', 'icon', iconsMap, [16, 32, 96]),
     defaultAppleIcon: getIcon(iconsPrefix, 'apple-icon', 'apple-touch-icon', iconsMap)
   }
 }

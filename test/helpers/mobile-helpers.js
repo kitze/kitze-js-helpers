@@ -1,5 +1,6 @@
 import {expect} from 'chai';
 import * as mobileHelpers from '../../src/helpers/mobile-helpers';
+import {webpackIconModules, iconResults} from '../data/webpack-icon-modules';
 
 const iconsMap = [
   {
@@ -64,6 +65,12 @@ describe('mobileHelpers', function () {
 
       expect(mobileHelpers.getIcons(path, prefix, rel, iconsMap, sizes)).to.eql(result);
       expect(mobileHelpers.getIcons(path, prefix, rel, iconsMap)).to.not.exist;
+    });
+  });
+
+  describe('getIcons', function () {
+    it('Provided an iconsPrefix and an iconsMap it should return the configuration for all the favicons', function () {
+      expect(mobileHelpers.getDefaultFavicons('./', webpackIconModules)).to.eql(iconResults);
     });
   });
 });
