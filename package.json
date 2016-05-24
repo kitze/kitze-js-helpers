@@ -15,19 +15,10 @@
     "lodash",
     "underscore"
   ],
-  "browser": {
-    "lodash": false,
-    "atob": false,
-    "btoa": false
-  },
   "browserify": {
     "transform": [
-      "babelify",
-      "browserify-shim"
+      "babelify"
     ]
-  },
-  "browserify-shim": {
-    "lodash": "global:_"
   },
   "author": "kitze",
   "license": "ISC",
