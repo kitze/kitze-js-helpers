@@ -39,7 +39,7 @@
     "browserify-shim": "3.8.12",
     "btoa": "1.1.2",
     "chai": "3.5.0",
-    "codecov.io": "0.1.6",
+    "codecov.io": "0.1.7",
     "commitizen": "2.8.6",
     "cz-conventional-changelog": "1.2.0",
     "istanbul": "0.4.5",
