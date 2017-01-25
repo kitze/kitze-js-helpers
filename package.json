@@ -31,7 +31,7 @@
     "browserify": "13.1.1",
     "lodash": "4.17.2",
     "uglify": "0.1.5",
-    "watchify": "3.7.0"
+    "watchify": "3.9.0"
   },
   "devDependencies": {
     "atob": "2.0.2",
