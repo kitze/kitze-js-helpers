@@ -1,21 +1,9 @@
-import * as numberHelpers from './helpers/number-helpers';
-import * as typeHelpers from './helpers/type-helpers';
-import * as arrayHelpers from './helpers/array-helpers';
-import * as stringHelpers from './helpers/string-helpers';
-import * as objectHelpers from './helpers/object-helpers';
-import * as browserHelpers from './helpers/browser-helpers';
-import * as mobileHelpers from './helpers/mobile-helpers';
-import * as webpackHelpers from './helpers/dom-helpers';
-import * as domHelpers from './helpers/dom-helpers';
-
-export default {
-  num: numberHelpers,
-  type: typeHelpers,
-  str: stringHelpers,
-  obj: objectHelpers,
-  arr: arrayHelpers,
-  browser: browserHelpers,
-  dom: domHelpers,
-  mobile: mobileHelpers,
-  webpack: webpackHelpers
-};
+export * as numberHelpers from './helpers/number-helpers';
+export * as typeHelpers from './helpers/type-helpers';
+export * as arrayHelpers from './helpers/array-helpers';
+export * as stringHelpers from './helpers/string-helpers';
+export * as objectHelpers from './helpers/object-helpers';
+export * as browserHelpers from './helpers/browser-helpers';
+export * as mobileHelpers from './helpers/mobile-helpers';
+export * as webpackHelpers from './helpers/dom-helpers';
+export * as domHelpers from './helpers/dom-helpers';
