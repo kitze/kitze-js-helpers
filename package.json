@@ -38,7 +38,7 @@
     "babel": "5.8.34",
     "browserify-shim": "3.8.12",
     "btoa": "1.1.2",
-    "chai": "3.5.0",
+    "chai": "4.0.1",
     "codecov.io": "0.1.6",
     "commitizen": "2.8.6",
     "cz-conventional-changelog": "2.0.0",
