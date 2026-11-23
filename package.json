@@ -45,7 +45,7 @@
     "istanbul": "0.4.5",
     "jsdoc": "^3.4.0",
     "minami": "^1.1.1",
-    "mocha": "3.2.0",
+    "mocha": "3.4.1",
     "semantic-release": "6.3.2",
     "underscore.string": "3.3.4"
   },
